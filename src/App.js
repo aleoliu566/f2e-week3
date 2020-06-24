@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Album from './components/Album';
+import Sidebar from './components/Sidebar';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   }
   return (
     <div style={app}>
+      <Sidebar/>
       <Album/>
     </div>
   );

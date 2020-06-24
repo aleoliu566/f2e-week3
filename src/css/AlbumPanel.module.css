@@ -1,0 +1,37 @@
+.singer{
+  color: red;
+}
+
+/* 改變 range bar 樣式 */
+.controlBar[type="range"]{
+  -webkit-appearance: none;
+  width:100%;
+  height:40px;
+  /* border: 1px solid black; */
+  /* background:red; */
+  outline : none;
+  border-radius: 0;
+  overflow:hidden;
+}
+
+.controlBar[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  position: relative;
+  width:20px;
+  height:30px;
+  margin-top: -10px;
+  background-color: blue;
+  border: 2px solid black;
+  border-radius: 0;
+  box-shadow: none;
+  /* box-sizing: border-box; */
+  /* box-shadow: -100vh 0px 0px 100vh lightgrey; */
+}
+
+.controlBar[type=range]::-webkit-slider-runnable-track{   
+  background-color: rgb(240, 234, 234);
+  border: 2px solid black;
+  height: 10px;
+}
+
+/* https://wizardgreen.github.io/Blog/2019/10/21/[CSS]%E8%A3%9D%E6%89%AE%E4%BD%A0%E7%9A%84RangeInput/ */
