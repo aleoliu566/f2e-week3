@@ -15,7 +15,7 @@ class Cd extends Component {
   }
 
   clickPlayBtn = () => {
-    if(this.state.playState == play){
+    if(this.state.playState === play){
       this.setState({
         playState: pause,
         playTickRotate: 20,

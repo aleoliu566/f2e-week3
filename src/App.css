@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.sideBar{
+  background-color: white;
+  display: inline-block;
+  width: 300px;
+  box-sizing: border-box;
+  border: 3px solid black;
+  height: calc( 100vh - 80px );
+  float: left;
+  text-align: left;
+}
+
+.Cover{
+  display: inline-block;
+  width: calc( 100vw - 300px);
+  float: right;
+}
+
+.singerBlock{
+  display: inline-block;
+  width: 100px;
+}
+
+.songBlock{
+  background-color: white;
+  position: absolute;
+  left: 120px;
+  top: 10px;
+  width: 190px;
+  height: calc( 100vh - 90px );
+  margin-top: 10px;
+  margin-right: -10px;
+  box-sizing: border-box;
+  border: 3px solid black;
+}
+
+.songPicSideBar{
+  position: absolute;
+  bottom: 0;
+}
+
+.songPicSideBar > img {
+  
+}
+
+.selectedList{
+  color: red;
+}
+
+.pointer{
+  cursor: pointer;
+}
