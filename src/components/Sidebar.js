@@ -23,7 +23,7 @@ class Sidebar extends Component {
       songIndex: selectedIndex,
       songPic: songListData[this.state.songListIndex].songDetail[selectedIndex].songPicture,
     });
-    this.props.changeSong();
+    this.props.changeSong(this.state.songListIndex,selectedIndex);
   }
 
   render() {

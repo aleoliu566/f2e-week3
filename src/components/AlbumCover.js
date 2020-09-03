@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import jay from '../img/jay.jpg';
 import player from '../img/player.svg';
 import play from '../img/play.svg';
 import pause from '../img/stop.svg';
@@ -10,8 +9,14 @@ class Cd extends Component {
     this.state = {
       playState: play,
       playTickRotate: -25,
-      audio: new Audio("https://firebasestorage.googleapis.com/v0/b/mp3player-4dc8c.appspot.com/o/Catch_Up.mp3?alt=media&token=822d8b1a-5870-45a0-8845-18bf7b65f04a"),
+      audio: new Audio(),
     }
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({
+      audio: new Audio(newProps.songData.songAudio)
+    });
   }
 
   clickPlayBtn = () => {
@@ -19,8 +24,10 @@ class Cd extends Component {
       this.setState({
         playState: pause,
         playTickRotate: 20,
+      },function(){
+        this.state.audio.play();
       });
-      this.state.audio.play();      
+      
     } else {
       this.setState({
         playState: play,
@@ -35,14 +42,7 @@ class Cd extends Component {
     const albumSet = {
       position: 'relative',
     }
-    const albumPic = {
-      boxSizing: 'border-box',
-      border: '2px solid #000000',
-      borderRadius: '100%',
-      width: '86%',
-      marginLeft: '14%',
-      opacity: '0.7',
-    }
+
     const circleDiameter = 70;
     const circleOnTheDisk={
       width: `${circleDiameter}px`,
@@ -67,9 +67,6 @@ class Cd extends Component {
       transformOrigin: '80% 80%',
 
     }
-    const playerIcon = {
-      width: '100%'
-    }
 
     const playStyle = {
       position: 'absolute',
@@ -88,20 +85,32 @@ class Cd extends Component {
       marginTop: '13px',
       marginLeft: '25%',
     }
+
+    let songImg = {
+      height: "361.5px",
+      width: '361.5px',
+      backgroundImage: `url(${this.props.songData.songPicture})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+
+      boxSizing: 'border-box',
+      border: '2px solid #000000',
+      borderRadius: '100%',      
+      marginLeft: '14%',
+      opacity: '0.7',
+    };
+
     return (
       <div>
         <div style={albumSet}>
-          <img src={jay} style={albumPic}/>
+          <div style={songImg}></div>
           <div style={circleOnTheDisk}></div>
           <div style={playerStyle}>
-            <img src={player} style={playerIcon}/>
+            <img src={player} className="w-100" />
           </div>
           <div style={playStyle} onClick={this.clickPlayBtn}>
             <img src={this.state.playState} style={playIcon}/>
           </div>
-          {/* <audio controls="controls">
-            <source src="https://firebasestorage.googleapis.com/v0/b/mp3player-4dc8c.appspot.com/o/The_Anunnaki_Return.mp3?alt=media&token=375c5c05-7f1c-41cf-9759-c0c59e8bd914" />
-          </audio> */}
         </div>
       </div>
     );

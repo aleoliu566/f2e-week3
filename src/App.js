@@ -4,9 +4,13 @@ import Album from './components/Album';
 import Sidebar from './components/Sidebar';
 
 export default class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.album = React.createRef();
+  }
 
-  changeSong = () =>{
-    console.log("changeSong");
+  changeSong = (songlistIdx, songIdx) =>{
+    this.album.current.changeSong(songlistIdx , songIdx);
   };
 
   render(){
@@ -21,7 +25,7 @@ export default class App extends React.Component{
           <Sidebar changeSong = {this.changeSong}/>
         </div>
         <div className="Cover">
-          <Album/>
+          <Album ref={this.album}/>
         </div>    
       </div>
     );

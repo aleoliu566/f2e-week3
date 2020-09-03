@@ -2,14 +2,28 @@ import React, { Component } from 'react';
 import AlbumCover from './AlbumCover';
 import AlbumOrder from './AlbumOrder';
 import AlbumPanel from './AlbumPanel';
+import songListData from '../data/musicData.js';
 
 class Album extends Component {
+  constructor(){
+    super();
+    this.state = {
+      songData: songListData[0].songDetail[0]
+    }
+  }
+
+  changeSong = (songlistIdx , songIdx) => {
+    console.log("[Album Test]", songlistIdx, songIdx);
+    this.setState({
+      songData: songListData[songlistIdx].songDetail[songIdx]
+    });
+  }
+
   render() {
     const albumCoverWidth = '85%';
     const albumOrderWidth = '15%';
     const albumCoverHeight = '40vh';
     const albumPosition = {
-      // paddingTop: `calc( (100vh - ${albumCoverWidth}) / 2 )`,
       paddingTop: 'calc( 50vh - 250px )',
     }
 
@@ -42,7 +56,7 @@ class Album extends Component {
       <div style={albumPosition}>
         <div style={albumStyle}>
           <div style={albumCover}>
-            <AlbumCover />
+            <AlbumCover songData={this.state.songData}/>
           </div>
           <div style={albumOrderPosition}>
             <AlbumOrder />
