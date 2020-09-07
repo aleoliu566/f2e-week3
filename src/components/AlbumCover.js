@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import player from '../img/player.svg';
 import play from '../img/play.svg';
 import pause from '../img/stop.svg';
+import songListData from '../data/musicData.js';
 
 class Cd extends Component {
   constructor(){
@@ -9,7 +10,7 @@ class Cd extends Component {
     this.state = {
       playState: play,
       playTickRotate: -25,
-      audio: new Audio(),
+      audio: new Audio(songListData[0].songDetail[0].songAudio),
     }
   }
 
@@ -49,7 +50,7 @@ class Cd extends Component {
       height: `${circleDiameter}px`,
       backgroundColor: '#FFFFFF',
       position: 'absolute',
-      right:'43%',
+      right:'47%',
       top:'50%',
       marginRight: `${-circleDiameter/2}px`,
       marginTop: `${-circleDiameter/2}px`,

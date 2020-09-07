@@ -7,11 +7,22 @@ export default class App extends React.Component{
   constructor(props) {
     super(props);
     this.album = React.createRef();
+    this.state = {
+      coverType: 'Cover',
+    }
   }
 
   changeSong = (songlistIdx, songIdx) =>{
     this.album.current.changeSong(songlistIdx , songIdx);
   };
+
+  changeListType = () => {
+    let type = 'Cover';
+    if(this.state.coverType === 'Cover') type = 'CoverLeft';
+    this.setState({
+      coverType: type
+    });
+  }
 
   render(){
     const app={
@@ -21,10 +32,11 @@ export default class App extends React.Component{
     }
     return(
       <div style={app}>
-        <div className="sideBar">
-          <Sidebar changeSong = {this.changeSong}/>
+        <div>
+          <Sidebar changeSong = {this.changeSong}
+                   changeListType = {this.changeListType}/>
         </div>
-        <div className="Cover">
+        <div className={this.state.coverType}>
           <Album ref={this.album}/>
         </div>    
       </div>

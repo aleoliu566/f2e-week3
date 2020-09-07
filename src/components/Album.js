@@ -24,18 +24,20 @@ class Album extends Component {
     const albumOrderWidth = '15%';
     const albumCoverHeight = '40vh';
     const albumPosition = {
-      paddingTop: 'calc( 50vh - 250px )',
+      paddingTop: 'calc( 50vh - 300px )',
     }
 
     const albumStyle = {
       width: '70vw',
       height: '70vw',
-      maxWidth: '500px',
-      maxHeight: '500px',
+      maxWidth: '600px',
+      maxHeight: '600px',
       margin: '0 auto',
       padding: '25px',
       backgroundColor: '#FFFFFF',
       textAlign: 'left',
+      boxSizing: 'border-box',
+      border: '3px solid black'
     }
 
     const albumCover = {

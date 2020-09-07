@@ -7,7 +7,8 @@ class Sidebar extends Component {
     this.state = {
       songListIndex: 0,
       songIndex: 0,
-      songPic: songListData[0].songDetail[0].songPicture
+      songPic: songListData[0].songDetail[0].songPicture,
+      listType: true,
     }
   }
   selectSongList = (selectedIndex) => {
@@ -24,6 +25,14 @@ class Sidebar extends Component {
       songPic: songListData[this.state.songListIndex].songDetail[selectedIndex].songPicture,
     });
     this.props.changeSong(this.state.songListIndex,selectedIndex);
+  }
+
+  clickListIcon = () => {
+    this.setState({
+      listType: !this.state.listType,
+    })
+    console.log("ee");
+    this.props.changeListType();
   }
 
   render() {
@@ -49,22 +58,32 @@ class Sidebar extends Component {
       backgroundSize: 'cover',
     };
 
+    let sideBarType = this.state.listType ? "sideBar beforRotate":"sideBar rotated";
+
     return (
-      <div>
+      <div className={sideBarType}>
         <div className="singerBlock">
-          {/* <input></input> */}
-          播放列表
-          <hr/>
+          <span className="sonBlockTitle">播放列表</span>
           <ul>
             {songlists}
           </ul>
         </div>
         <div className="songBlock">
-          <span>歌曲</span>
-          <hr/>
-          <ul>
-            {songs}
-          </ul>
+          <div className="songListBlock">
+            <span className="sonBlockTitle">歌曲</span>
+            <span className="list-block"　onClick={this.clickListIcon}>
+              List
+              <div>
+                <div className="menu-icon"></div>
+                <div className="menu-icon"></div>
+                <div className="menu-icon"></div>
+              </div>
+            </span>
+            <hr/>
+            <ul>
+              {songs}
+            </ul>
+          </div>
           <div className="songPicSideBar"　style={songImg}>
             {/* <img src={sidebar_pic_3} width="100%"/> */}
           </div>
